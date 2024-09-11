@@ -1,0 +1,11 @@
+pre[class*="language-"] {
+  border-radius: 16px;
+  border: 1px var(--border-color) solid;
+  margin: 2em 0;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  background: #212637;
+  color: #aea9b9;
+}
