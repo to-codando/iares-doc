@@ -10,7 +10,7 @@ type Params = {
 
 const template = ({ props }: Params) => tsx`
   <div class="wrap-ctx">
-      <${props.content} />
+      <${props?.content || ""} />
   </div>
 `;
 
