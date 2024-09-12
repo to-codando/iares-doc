@@ -85,7 +85,6 @@ const template = () => tsx`
   <${TemplatePage}
     leftSidebar=${MenuApp}
     content=${ContentApp}
-    rightSidebar=${MenuApp}
   />
 `;
 

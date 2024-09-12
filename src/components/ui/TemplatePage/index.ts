@@ -58,7 +58,7 @@ const template = ({ props }: Params) => {
         <${props.content} />
       </div>
       <div class="side-wrap-ctx side-right-ctx">
-          <${SidebarApp} content=${props.rightSidebar}/>
+          <!-- <${SidebarApp} content=${props.rightSidebar}/> -->
       </div>
     </div>
     <div class="footer-ctx">
