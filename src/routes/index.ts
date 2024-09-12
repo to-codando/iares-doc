@@ -17,7 +17,7 @@ export const routes: TRoute[] = [
   },
 
   {
-    regex: /^#\/get-started$/,
+    regex: /^#\/getting-started$/,
     start: "#/",
     mount: ({ context }) => {
       render(html`<${GetStartedPage}/>`, context);
