@@ -4,12 +4,12 @@ const template = () => tsx`
   <ul class="list-ctx">
     <li><a href="#/getting-started">Getting Started</a></li>
     <li><a href="#/scaffolding">Scaffolding</a></li>
-    <li><a href="#/lifecycle">Lifecycle</a></li>
+    <li><a href="#/lifecycles">Lifecycle</a></li>
     <li><a href="#/components">Components</a></li>
     <li><a href="#/state">State</a></li>
     <li><a href="#/routes">Routes</a></li>
     <li><a href="#/good-parts">Good parts</a></li>
-    <li><a href="#/motivation">Motivation</a></li>
+    <li><a href="#/motivations">Motivations</a></li>
   </ul>
 `;
 export const MenuApp = () => ({ template, styles });

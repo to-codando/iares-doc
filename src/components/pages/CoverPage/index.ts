@@ -27,7 +27,7 @@ const template = () => tsx`
       </article>
     </div>
     <div class="content-ctx">
-      <a href="#/get-started">Get Started</a>
+      <a href="#/getting-started">Get Started</a>
     </div>
   </div>
 `;
