@@ -86,8 +86,16 @@ hr {
 
 ul,
 ul li {
-  font-weight: 600;
   list-style: disc;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: Italic;
+  color: #ebebeb
 }
 
 /* custom scrollbar */

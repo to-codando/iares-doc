@@ -17,26 +17,47 @@ const template = ({ props }: Params) => {
     <div class="header-ctx">
       <div class="header-content-ctx">
         <div class="grid grid-cols-12">
-          <div class="xxl-col-1">
+          <div class="xxl-col-1
+            xy-align-center
+            xs-col-start-1 xs-col-end-4
+            sm-col-start-1 sm-col-end-3
+            lg-col-start-1 lg-col-end-3 
+            xl-col-2 
+            xxl-col-2
+         ">
            <${LogoApp}/>
           </div>
-          <div class="xxl-col-start-5 xxl-col-end-9 xy-align-center">
+          <div class="
+            xy-align-center
+            xs-col-start-5 xs-col-end-10
+            sm-col-start-5 sm-col-end-10
+            lg-col-start-4 lg-col-end-11 
+            xl-col-start-4 xl-col-end-10
+            xxl-col-start-5 xxl-col-end-9
+         ">
              <${SearchApp}/>
           </div>
-          <div class="xxl-col-start-12 xx-col-end-13 xy-align-center">
+          <div class="
+            xy-align-center
+            xs-col-start-11 xs-col-end-13
+            sm-col-start-11 sm-col-end-13
+            lg-col-start-12 lg-col-end-13 
+            xl-col-start-12 xl-col-end-13
+            xxl-col-start-12 xxl-col-end-13
+          ">
               <${SocialIconApp} name="github"/>
           </div>
         </div>
       </div>
     </div>
     <div class="body-content-ctx">
-      <div class="side-wrap-ctx">
+      <div class="side-wrap-ctx side-left-ctx">
           <${SidebarApp} content=${props.leftSidebar}/>
       </div>
       <div class="content-wrap-ctx">
         <${props.content} />
       </div>
-      <div class="side-wrap-ctx">
+      <div class="side-wrap-ctx side-right-ctx">
           <${SidebarApp} content=${props.rightSidebar}/>
       </div>
     </div>
@@ -99,7 +120,7 @@ const styles = () => css`
   .content-wrap-ctx {
     height:calc(100vh - 75px);
     flex-direction: column;
-    padding:2em 2em 0 2em;
+    padding:2em 2em 8em 2em;
     border-left: 1px var(--border-color) solid;
     border-right: 1px var(--border-color) solid;
     overflow:hidden;
@@ -112,6 +133,32 @@ const styles = () => css`
   }
 
 
+  @media all and (max-width:1180px) {
+    .content-wrap-ctx {
+      border-right:0
+    }
+    .body-content-ctx {
+      grid-template-columns: 250px 1fr;
+    }
 
+    .side-left-ctx{}
+    .side-right-ctx {
+      display: none;
+    }
+  }
+  @media all and (max-width:980px) {
+    .content-wrap-ctx {
+      border-right:0;
+      border-left:0;
+    }
+    .body-content-ctx {
+      grid-template-columns: 1fr;
+    }
+
+    .side-left-ctx,
+    .side-right-ctx {
+      display: none;
+    }
+  }
 
 `;

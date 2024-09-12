@@ -23,10 +23,16 @@ const styles = () => css`
   }
   .wrap-ctx > a,
   .wrap-ctx  img {
-    width:110%;
+    width:100%;
   }
 
   .wrap-ctx h1 {
     font-size:0;
+  }
+
+  @media all and (min-width: 1080px) {
+    .wrap-ctx  img {
+      width:80%;
+    }
   }
 `;

@@ -6,18 +6,18 @@ const template = () => tsx`
       <article>
       <img
         class="logo-ctx"
-        src="/assets/images/iares.png" 
-        alt="IARES - A simple reactive library"
+        src="/assets/images/iares.png"
+        alt="IARES"
       />
-      <h1>A open source, simple and powerful library to develop reactive aplications.</h1>
+      <h1>A powerful and simple open-source library for developing reactive applications.</h1>
       <p>
-        <span>easy development of</span>
+        <span>Easy development of:</span>
       <ul>
         <li>
           Web,
         </li>
         <li>
-          Mobile
+          Mobile,
         </li>
         <li>
           and Desktop
@@ -38,6 +38,9 @@ export const CoverPage = () => ({
 });
 
 const styles = () => css`
+  cover-page {
+    padding-bottom: 8em
+  }
   cover-page,
   .wrap-ctx {
     display:flex;
@@ -48,7 +51,7 @@ const styles = () => css`
     width: 100%;
     height: 100vh;
   }
-  
+
   .content-ctx {
     display:flex;
     justify-content:center;
@@ -63,7 +66,7 @@ const styles = () => css`
     max-width: 480px;
   }
 
-  .wrap-ctx h1, 
+  .wrap-ctx h1,
   .wrap-ctx p,
   .wrap-ctx span,
   .wrap-ctx article,
@@ -81,7 +84,7 @@ const styles = () => css`
   }
 
   .wrap-ctx  h1 {
-    font-size: 2.5em; 
+    font-size: 2.5em;
     line-height: 1.2em;
     margin: 2em 0;
   }
@@ -90,7 +93,7 @@ const styles = () => css`
     font-size: 1.2em;
     line-height: 1.8em;
   }
-  
+
   .wrap-ctx ul {
     padding:0;
     text-align: center;
@@ -113,7 +116,17 @@ const styles = () => css`
     box-shadow: 0 0 15px #FF2B77;
     color: #661733;
     font-weight: bold;
-    font-size: 1.2em;  
+    font-size: 1.2em;
     margin-top: 2em;
+  }
+
+  @media all and (max-width: 1180px) {
+    .logo-ctx {
+      max-width:220px;
+      margin-top:4em
+    }
+    .wrap-ctx h1 {
+      font-size: 1.8em
+    }
   }
 `;
