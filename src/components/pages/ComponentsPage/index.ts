@@ -91,7 +91,7 @@ export const ComponentsPage = () => {
 };
 
 const styles = () => css`
-  get-started-page {
+  components-page {
     display:flex;
     flex-wrap: wrap;
     justify-content:center;
@@ -99,7 +99,7 @@ const styles = () => css`
     width:100%;
   }
 
-  get-started-page content-app {
+  components-page content-app {
     display:block;
     float:left;
     width:100%;

@@ -91,7 +91,7 @@ export const GoodPartsPage = () => {
 };
 
 const styles = () => css`
-  get-started-page {
+  good-parts-page {
     display:flex;
     flex-wrap: wrap;
     justify-content:center;
@@ -99,7 +99,7 @@ const styles = () => css`
     width:100%;
   }
 
-  get-started-page content-app {
+  good-parts-page content-app {
     display:block;
     float:left;
     width:100%;
