@@ -8,9 +8,7 @@ export const appMainCreateActions = (): AppMainActions => {
   const hideMobileMenuOnHashChanges = () => {
     window.addEventListener("hashchange", () => {
       actions.hideMenu();
-      console.log("ok");
     });
-    console.log("loaded");
   };
   return { hideMobileMenu, hideMobileMenuOnHashChanges };
 };
