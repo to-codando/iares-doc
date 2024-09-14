@@ -43,7 +43,7 @@
     "@capacitor/ios": "^6.1.2",
     "@capacitor/toast": "^6.0.2",
     "@types/markdown-it": "^14.1.2",
-    "fam-code-ui": "^0.0.10",
+    "fam-code-ui": "^0.0.11",
     "htm": "^3.1.1",
     "iares": "^1.2.4",
     "markdown-it": "^14.1.0",

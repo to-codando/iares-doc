@@ -81,8 +81,9 @@ const template = () => tsx`
   <${TemplatePage}
     leftSidebar=${MenuApp}
     content=${ContentApp}
+    navigation=${{ previous: "getting-started", next: "lifecycles" }}
   />
-`;
+  `;
 
 export const ScaffoldingPage = () => {
   const actions = createTemplatePageActions();
@@ -92,16 +93,16 @@ export const ScaffoldingPage = () => {
 
 const styles = () => css`
   scaffolding-page {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content:center;
-    align-items: flex-start;
-    width:100%;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100 %;
+}
 
-  scaffolding-page content-app {
-    display:block;
-    float:left;
-    width:100%;
-  }
+scaffolding-page content-app {
+  display: block;
+  float: left;
+  width: 100%;
+}
 `;

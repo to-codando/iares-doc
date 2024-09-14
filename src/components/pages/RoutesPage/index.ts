@@ -81,6 +81,7 @@ const template = () => tsx`
   <${TemplatePage}
     leftSidebar=${MenuApp}
     content=${ContentApp}
+    navigation=${{ previous: "state", next: "good-parts" }}
   />
 `;
 

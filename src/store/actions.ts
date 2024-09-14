@@ -1,11 +1,14 @@
 import type { ActionType } from "./types";
 
 export const createActions: ActionType = (store) => {
-  const getText = () => {
-    return store.state.text;
+  const toggleMenu = () => {
+    store.setState({
+      ...store.state,
+      menuIsVisible: !store.state.menuIsVisible,
+    });
   };
 
   return {
-    getText,
+    toggleMenu,
   };
 };

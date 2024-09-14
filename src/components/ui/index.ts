@@ -4,5 +4,6 @@ export { SearchApp } from "./SearchApp";
 export { SocialIconApp } from "./SocialIconApp";
 export { SidebarApp } from "./SidebarApp";
 export { MenuApp } from "./MenuApp";
-
+export { ToggleMenu } from "./ToggleMenu";
+export { NavigationApp } from "./NavigationApp";
 export { CodeApp } from "./CodeApp";
