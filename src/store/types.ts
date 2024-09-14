@@ -1,11 +1,11 @@
 import type { StateType } from "@/utils/types";
 
 export interface StoreType {
-  text: string;
+  menuIsVisible: boolean;
 }
 
-export interface StoreActions {
-  getText: () => string;
-}
+export type StoreActions = {
+  toggleMenu: () => void;
+};
 
 export type ActionType = (store: StateType<StoreType>) => StoreActions;

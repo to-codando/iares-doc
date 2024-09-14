@@ -3,7 +3,7 @@ import { createActions } from "./actions";
 import type { StoreType } from "./types";
 
 const store = createState<StoreType>({
-  text: "Hello world",
+  menuIsVisible: false,
 });
 
 const actions = createActions(store);
