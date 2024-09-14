@@ -6,6 +6,7 @@ export interface StoreType {
 
 export type StoreActions = {
   toggleMenu: () => void;
+  hideMenu: () => void;
 };
 
 export type ActionType = (store: StateType<StoreType>) => StoreActions;

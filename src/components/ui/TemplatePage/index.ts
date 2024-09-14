@@ -25,7 +25,6 @@ type TTemplateState = {
 type Params = { props: Props; state: TTemplateState };
 
 const template = ({ props, state }: Params) => {
-  console.log(state);
   return tsx`
  <div class="wrap-ctx">
     <div class="header-ctx">
