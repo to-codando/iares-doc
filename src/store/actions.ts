@@ -1,6 +1,6 @@
-import type { ActionType } from "./types";
+import type { ActionType, StoreActions } from "./types";
 
-export const createActions: ActionType = (store) => {
+export const createActions: ActionType = (store): StoreActions => {
   const toggleMenu = () => {
     store.setState({
       ...store.state,
@@ -8,7 +8,15 @@ export const createActions: ActionType = (store) => {
     });
   };
 
+  const hideMenu = () => {
+    store.setState({
+      ...store.state,
+      menuIsVisible: false,
+    });
+  };
+
   return {
     toggleMenu,
+    hideMenu,
   };
 };

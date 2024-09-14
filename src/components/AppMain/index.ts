@@ -1,4 +1,7 @@
 import { css, html } from "iares";
+import { appMainCreateActions } from "./actions";
+import { AppMainCreateHooks } from "./hooks";
+
 export const template = () => html`
   <div class="wrap-ctx">
     <router-view></router-view>
@@ -6,9 +9,13 @@ export const template = () => html`
 `;
 
 export const AppMain = () => {
+  const actions = appMainCreateActions();
+  const hooks = AppMainCreateHooks(actions);
   return {
     template,
     styles,
+    actions,
+    hooks,
   };
 };
 
