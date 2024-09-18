@@ -28,6 +28,7 @@ const CERTPEM = join(`${SSHPATH}/${TLS_CERT}`);
 const config = {
   bundle: true,
   write: true,
+  keepNames: true,
   define: {
     "process.env.ENVIRONMENT": JSON.stringify(process.env.NODE_ENV),
     "process.env.PORT": JSON.stringify(PORT),
