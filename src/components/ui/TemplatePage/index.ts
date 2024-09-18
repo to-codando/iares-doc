@@ -173,6 +173,15 @@ const styles = () => css`
     padding-bottom:2em;
   }
 
+  .content-wrap-ctx a {
+    color: #6467ff;
+    text-decoration: underline;
+  }
+
+  .content-wrap-ctx a:hover {
+    color: #8fb6ff;
+  }
+
   .side-wrap-ctx {
     padding: 4em 0 0 0;
 
