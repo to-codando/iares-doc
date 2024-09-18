@@ -1,9 +1,9 @@
+import "dotenv/config";
 import { resolve, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { context, build } from "esbuild";
 
 import copy from "esbuild-copy-static-files";
-import aliasPlugin from "esbuild-plugin-path-alias";
 import { tsAliasPathResolver } from "./config/plugins/tsAliasPathResolver/index.js";
 
 import resolveEnvironment from "./config/plugins/env.js";
@@ -55,14 +55,6 @@ const config = {
       recursive: true,
     }),
     tsAliasPathResolver,
-    aliasPlugin({
-      "@/store": resolve(__dirname, "./src/store/index"),
-      "@/components": resolve(__dirname, "./src/components"),
-      "@/services": resolve(__dirname, "./src/services"),
-      "@/utils": resolve(__dirname, "./src/utils"),
-      "@/assets": resolve(__dirname, "./public/assets"),
-      "@/mock": resolve(__dirname, "./src/mock/"),
-    }),
     onRebuild(),
   ],
   loader: {
