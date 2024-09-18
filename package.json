@@ -17,19 +17,35 @@
     "test:watcher": "run-when-changed --watch './dist/**/*.js' --exec 'mocha  ./dist/**/*.spec.js %s'"
   },
   "aliases": {
-    "@/store": ["./dist/store/index.ts"],
-    "@/components/*": ["./dist/components"],
-    "@/utils/*": ["./dist/utils"],
-    "@/services/*": ["./dist/services"],
-    "@/assets/*": ["./dist/assets"],
-    "@/mock/*": ["./dist/mock"],
-    "@/tests/*": ["./dist/tests"]
+    "@/store": [
+      "./dist/store/index.ts"
+    ],
+    "@/components/*": [
+      "./dist/components"
+    ],
+    "@/utils/*": [
+      "./dist/utils"
+    ],
+    "@/services/*": [
+      "./dist/services"
+    ],
+    "@/assets/*": [
+      "./dist/assets"
+    ],
+    "@/mock/*": [
+      "./dist/mock"
+    ],
+    "@/tests/*": [
+      "./dist/tests"
+    ]
   },
   "ts-standard": {
     "project": "./tsconfig.json"
   },
   "nyc": {
-    "extension": [".ts"]
+    "extension": [
+      ".ts"
+    ]
   },
   "dependencies": {
     "fam-code-ui": "^0.0.11",
@@ -63,6 +79,7 @@
     "install-peerdeps": "^3.0.3",
     "jsdom": "^21.1.2",
     "json-server": "^0.17.4",
+    "jsonc-parser": "^3.3.1",
     "kill-port": "^2.0.1",
     "mocha": "^10.7.0",
     "prettier": "^3.3.3",
