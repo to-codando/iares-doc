@@ -7,14 +7,16 @@ blockquote {
 
 code[class*="language-"],
 pre[class*="language-"] {
-  background: #212637;
+  background: #080a14;
   color: #aea9b9;
 }
 
 blockquote {
   padding: 1em;
   margin: 1em 0;
-  background: #11131d;
+  background: #272a43;
+  border: 1px #455068 solid;
+  border-left: 3px #7989ae solid;
 }
 
 ol {
