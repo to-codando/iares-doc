@@ -1,4 +1,5 @@
-pre[class*="language-"] {
+pre[class*="language-"],
+blockquote {
   border-radius: 16px;
   border: 1px var(--border-color) solid;
   margin: 2em 0;
@@ -8,4 +9,14 @@ code[class*="language-"],
 pre[class*="language-"] {
   background: #212637;
   color: #aea9b9;
+}
+
+blockquote {
+  padding: 1em;
+  margin: 1em 0;
+  background: #11131d;
+}
+
+ol {
+  list-style: number;
 }

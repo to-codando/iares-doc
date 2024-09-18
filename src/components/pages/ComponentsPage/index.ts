@@ -6,75 +6,115 @@ import { css, tsx, mdx } from "iares";
 const ContentApp = () => mdx`
 # Components
 ---
-IARES is an open-source project created to help build all types of commercial applications with web technologies. However, unlike many frameworks and libraries, IARES doesn't turn into the next problem in your tech stack.
 
-The IARES documentation is intentionally brief but clear and understandable. Therefore, in this documentation, you can learn all about developing with IARES.
+Componentes IARES são funções que devem retornar templates html, jsx, tsx ou mdx e estilos css.
 
-## Installation
+Veja abaixo um exemplo de componente simples.
 
-Maybe you want to develop applications for web, mobile, or desktop. Hence, I prepared an appropriate template for each project type.
+~~~js
+import { tsx } from 'iares';
 
-### Template types
+const template = () => tsx\`
+  <button>
+    Say hello!
+  </button>
+\`
 
-Each template works with a specific set of tools to meet the necessities of each project type.
+export const ButtonApp = () => ({ 
+  template, 
+  styles 
+})
 
-- **esbuild**: Web development (SPA).
-
-- **Bun**: Web development (SSR or SSG).
-
-- **Capacitor**: Mobile development (IOS e Android).
-
-- **Tauri**: Desktop development (Windows, Mac OS or Linux).
-
-
-Just copy and paste any of the following terminal commands into your terminal, and you will get a project bootstrap to start application development.
-
-#### Web ( SPA )
-
-~~~raw
-npx degit to-codando/iares-template-spa new-spa-app-name
+const styles = () => css\`
+  button-app {
+    display:flex;
+  }
+\`
 ~~~
 
-#### Web ( SSR )
+Observe que as funções template e styles são injetadas no componente através da técnica de composição de objetos.
 
-~~~raw
-npx degit to-codando/iares-template-ssr new-ssr-app-name
+## Template
+
+Um template em componentes IARES é apenas uma função que pode retornar html, jsx, tsx ou inda mdx.
+
+> *jsx, tsx e mdx* são notações capazes de combinar a sintaxe javascript ou typescript com elementos html e marcações markdown respectivamente.
+
+### Parâmetros do template
+
+O template tem a capacidade de acessar os parâmetros abaixo:
+
+- **props** - Propriedades de dados fornecidas através de atributos do componente.
+- **state** - Objeto contendo chaves de dados do gerenciador de estados ligado ao componente.
+- **actions** - Funções capazes de executar operações e definir o comportamento de reação do componente.
+
+Veja abaixo um exemplo de como declarar e acessar parâmetros de template.
+
+~~~js
+import { tsx, createState } from 'iares';
+import { debounce } from '@/utils';
+
+type TProps = {
+  value: number;
+}
+
+Type TState = {
+  total: number;
+}
+
+TActions = {
+  doubleValue: () => void;
+}
+
+type TParams = {
+  props: TProps;
+  state: TState;
+  actions: TActions;
+}
+
+const template = ({ state, props, actions }: TParams) => tsx\`
+  <label>
+    <span> O dobro de:</span>
+    <input type="text" onkeyup=\${debounce(actions.doubleValue)}/> é \${total}
+  </label>
+\`
+
+export const DoubleValueApp = ({ props }: TProps) => {
+  const state = createState<TState>({ total: props.value || 0 })
+
+  const actions = {
+    doubleValue: (value: number) => {
+      const total = value * 2;
+      state.setState({ total })
+    }
+  }
+
+  return { template, state, props, actions }
+}
+
 ~~~
 
+Observe que os recursos retornados em **DoubleValueApp** são acessados através da função de template na view do componente.
 
-#### Web ( SSG )
+> IARES é inteligente o suficiente para fornecer à propriedade composta **template** as outras três propriedades **state**, **props** e **actions** e assim garante total flexibilidade para gerenciar como o componente reage a mudanças de estado e que informações devem ser exibidas.
 
-~~~raw
-npx degit to-codando/iares-template-ssg new-ssg-app-name
-~~~
+## Composition API
 
-#### Mobile ( Android e IOS )
+Nas seções anteriores o componente ButtonApp foi composto pelas funções template e styles. No entanto, existem outras propriedades que podem fazer parte da composição de componentes IARES.
 
-~~~raw
-npx degit to-codando/iares-template-mobile new-mobile-app-name
-~~~
+Observe abaixo todas as propriedades que podem fazer parte de componentes IARES:
 
-#### Desktop ( Windows, Mac OS, Linux )
+- **template** - Função que retorna um literal template contendo elementos html e outros componentes.
+- **styles** - Função que retorna um literal template contendo os estilos css do componente.
+- **props** - Propriedades de dados fornecidas por outros componentes através de atributos html.
+- **state** - Dados observáveis através dos quais o componente pode reagir a alterações de estado.
+- **actions** - Funções capazes de executar operações e defir reações programaticamente.
+- **hooks** - Funções específicas executadas no ciclo de vida de componentes IARES.
 
-~~~raw
-npx degit to-codando/iares-template-desktop new-desktop-app-name
-~~~
+Para saber mais sobre **state** e **hooks** acesse suas respectivas seções através dos links:
+- [State](#/state)
+- [Lifecycle hooks](#/lifecycles)
 
-## Launch the application
-
-To execute the project, you first need to install all application dependencies. Therefore, use the following command:
-
-~~~raw
-pnpm i
-~~~
-
-With all dependencies installed, you can run the application using the following command:
-
-~~~raw
-pnpm dev
-~~~
-
-If you performed all the steps correctly, the application will be available in your browser through the address: **https://your.ip:3000**
 `;
 
 const template = () => tsx`

@@ -4,77 +4,106 @@ import { createTemplatePageHooks } from "@/componentsui/TemplatePage/hooks";
 import { css, tsx, mdx } from "iares";
 
 const ContentApp = () => mdx`
-# Lifecycles
+# Lifecycle hooks
 ---
-IARES is an open-source project created to help build all types of commercial applications with web technologies. However, unlike many frameworks and libraries, IARES doesn't turn into the next problem in your tech stack.
 
-The IARES documentation is intentionally brief but clear and understandable. Therefore, in this documentation, you can learn all about developing with IARES.
+Veja como é simples e compreensível a linha do tempo do ciclo de vida dos componentes IARES.
 
-## Installation
+![components lifecycle](/assets/images/lifecycle.png)
 
-Maybe you want to develop applications for web, mobile, or desktop. Hence, I prepared an appropriate template for each project type.
+## Tipos e cronologia
 
-### Template types
+Cada um dos hooks do ciclo de vida é chamado no momento adequado. A ordem de execução dos hooks quando declarados é:
 
-Each template works with a specific set of tools to meet the necessities of each project type.
+1. **beforeMount** - Executado antes de montar o componente.
+2. **beforeRender** - Executado antes da renderização do html do componente.
+3. **afterRender** - Executado após a renderização do html do componente.
+4. **afterMount** - Executado após concluir a montagem do componente.
+5. **destroy** - Executado logo antes de destruir o componente.
 
-- **esbuild**: Web development (SPA).
+## Declarando hooks
 
-- **Bun**: Web development (SSR or SSG).
+No IARES os hooks são apenas funções. Mas, para fins de organização e modularidade, você pode criar hooks usando factories.
 
-- **Capacitor**: Mobile development (IOS e Android).
+Abaixo exemplos de hooks IARES podem ser declarados.
 
-- **Tauri**: Desktop development (Windows, Mac OS or Linux).
+- **Declaração simples:**
 
+A declaração simples pode ser usada em casos muitos simples em que dado hook executará apenas uma única ação que por sua vez afetará o comportamento do componente.
 
-Just copy and paste any of the following terminal commands into your terminal, and you will get a project bootstrap to start application development.
+~~~js
+//HelloApp/index.ts
+import { tsx } from 'iares';
 
-#### Web ( SPA )
+const template = () => tsx\`
+<h1>Hello!</h1>
+\`
+export const HelloApp = () => {
 
-~~~raw
-npx degit to-codando/iares-template-spa new-spa-app-name
+  const hooks = {
+    beforeMount() {
+      console.log('Hello!')
+    }
+  }
+
+  return { template, hooks }
+}
 ~~~
 
-#### Web ( SSR )
+- **Declaração com factory:**
 
-~~~raw
-npx degit to-codando/iares-template-ssr new-ssr-app-name
+A declaração através de factory function pode ser usada quando um certo conjunto de hooks é necessário para definir comportamentos através da execução de diferentes ações do componente.
+
+~~~js
+//HelloApp/hooks/index.ts
+type THelloAppActions = {
+  showLocationHash: () => void;
+}
+
+export const HelloAppCreateHooks = (actions: THelloAppActions) => {
+  const afterMount = () => {
+    window.addEventListener('hashchange', showLocationHash
+ }
+  const destroy = () => {
+    window.removeEventListener('hashchange', showLocationHash)
+  }
+  return { beforeMount, destroy }
+}
 ~~~
 
+No exemplo acima, dois hooks foram declarados **afterMount** e **destroy**.
 
-#### Web ( SSG )
+A função afterMount, será executada após a montagem do component e um event listener será adicionado. Através do event listener mensagens de log serão exibidas no console do navegador quando o location hash for alterado.
 
-~~~raw
-npx degit to-codando/iares-template-ssg new-ssg-app-name
+A função destroy será executada logo antes do componente ser destruído e removerá o listener do evento **hashchange**.
+
+### Usando hooks factory
+
+No exemplo anterior um factory foi declarado para criar os hooks **beforeMount** e **destroy**. Seguindo adiante, é possível importar esse factory e usá-lo para definir o comportamento do componente.
+
+~~~js
+//HelloApp/index.ts
+import { tsx } from 'iares';
+import { HelloAppCreateHooks } from './hooks'
+
+const template = () => tsx\`
+<h1>Hello!</h1>
+\`
+export const HelloApp = () => {
+
+  const actions = {
+    showLocationHash() {
+      console.log(window.location.hash)
+    }
+  }
+
+  const hooks = createHooks(actions)
+
+  return { template, hooks }
+}
 ~~~
 
-#### Mobile ( Android e IOS )
-
-~~~raw
-npx degit to-codando/iares-template-mobile new-mobile-app-name
-~~~
-
-#### Desktop ( Windows, Mac OS, Linux )
-
-~~~raw
-npx degit to-codando/iares-template-desktop new-desktop-app-name
-~~~
-
-## Launch the application
-
-To execute the project, you first need to install all application dependencies. Therefore, use the following command:
-
-~~~raw
-pnpm i
-~~~
-
-With all dependencies installed, you can run the application using the following command:
-
-~~~raw
-pnpm dev
-~~~
-
-If you performed all the steps correctly, the application will be available in your browser through the address: **https://your.ip:3000**
+Você pode adicionar qualquer um dos 5 hooks suportados nos componentes IARES e ao adotar essa estratégia que favorece a modularização e facilita a aplicação de testes de unidade.
 `;
 
 const template = () => tsx`
