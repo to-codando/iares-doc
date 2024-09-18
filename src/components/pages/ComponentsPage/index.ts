@@ -20,9 +20,9 @@ const template = () => tsx\`
   </button>
 \`
 
-export const ButtonApp = () => ({ 
-  template, 
-  styles 
+export const ButtonApp = () => ({
+  template,
+  styles
 })
 
 const styles = () => css\`
@@ -75,7 +75,7 @@ type TParams = {
 const template = ({ state, props, actions }: TParams) => tsx\`
   <label>
     <span> O dobro de:</span>
-    <input type="text" onkeyup=\${debounce(actions.doubleValue)}/> é \${total}
+    <input type="text" onkeyup=\${debounce(actions.doubleValue)}/> é \${state.total}
   </label>
 \`
 

@@ -4,7 +4,6 @@ import { context, build } from "esbuild";
 
 import copy from "esbuild-copy-static-files";
 import aliasPlugin from "esbuild-plugin-path-alias";
-import { dTSPathAliasPlugin } from "esbuild-plugin-d-ts-path-alias";
 import { tsAliasPathResolver } from "./config/plugins/tsAliasPathResolver/index.js";
 
 import resolveEnvironment from "./config/plugins/env.js";
@@ -55,11 +54,6 @@ const config = {
       dest: resolve(__dirname, "./dist"),
       recursive: true,
     }),
-
-    //dTSPathAliasPlugin({
-    // tsconfigPath: "./tsconfig.json",
-    //debug: false,
-    //}),
     tsAliasPathResolver,
     aliasPlugin({
       "@/store": resolve(__dirname, "./src/store/index"),
