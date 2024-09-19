@@ -9,20 +9,21 @@ const template = () => tsx`
         src="/assets/images/iares.png"
         alt="IARES"
       />
-      <h1>A powerful and simple open-source library for developing reactive applications.</h1>
+      <h1>A powerful and straightforward open-source library for building reactive applications.</h1>
       <p>
         <span>Easy development of:</span>
-      <ul>
-        <li>
-          Web,
-        </li>
-        <li>
-          Mobile,
-        </li>
-        <li>
-          and Desktop
-        </li>
-      </ul>
+        <ul>
+          <li>
+            Web,
+          </li>
+          <li>
+            Mobile,
+          </li>
+          <li>
+            and Desktop
+          </li>
+        </ul>
+        <span>applications.</span>
       </p>
       </article>
     </div>
