@@ -7,29 +7,29 @@ const ContentApp = () => mdx`
 # Lifecycle hooks
 ---
 
-Veja como é simples e compreensível a linha do tempo do ciclo de vida dos componentes IARES.
+See how simple and easy to understand the timeline of the IARES component lifecycle is.
 
 ![components lifecycle](/assets/images/lifecycle.png)
 
-## Tipos e cronologia
+## Types and chronology
 
-Cada um dos hooks do ciclo de vida é chamado no momento adequado. A ordem de execução dos hooks quando declarados é:
+Each lifecycle hook is called at the appropriate time. The execution order of the hooks when declared is:
 
-1. **beforeMount** - Executado antes de montar o componente.
-2. **beforeRender** - Executado antes da renderização do html do componente.
-3. **afterRender** - Executado após a renderização do html do componente.
-4. **afterMount** - Executado após concluir a montagem do componente.
-5. **destroy** - Executado logo antes de destruir o componente.
+1. **beforeMount** - Executed before mounting the component.
+2. **beforeRender** - Executed before rendering the component’s HTML.
+3. **afterRender** - Executed after rendering the component’s HTML.
+4. **afterMount** - Executed after completing the component's mounting.
+5. **destroy** - Executed just before destroying the component.
 
-## Declarando hooks
+## Declaring hooks
 
-No IARES os hooks são apenas funções. Mas, para fins de organização e modularidade, você pode criar hooks usando factories.
+In IARES, hooks are simply functions. However, for the sake of organization and modularity, you can create hooks using factories.
 
-Abaixo exemplos de hooks IARES podem ser declarados.
+Below are examples of how IARES hooks can be declared.
 
-- **Declaração simples:**
+- **Simple declaration:**
 
-A declaração simples pode ser usada em casos muitos simples em que dado hook executará apenas uma única ação que por sua vez afetará o comportamento do componente.
+A simple declaration can be used in very basic cases where the given hook will execute only one action, which in turn will affect the behavior of the component.
 
 ~~~js
 //HelloApp/index.ts
@@ -50,9 +50,9 @@ export const HelloApp = () => {
 }
 ~~~
 
-- **Declaração com factory:**
+- **Factory declaration:**
 
-A declaração através de factory function pode ser usada quando um certo conjunto de hooks é necessário para definir comportamentos através da execução de diferentes ações do componente.
+The declaration via a factory function can be used when a set of hooks is required to define behaviors through the execution of different component actions.
 
 ~~~js
 //HelloApp/hooks/index.ts
@@ -62,8 +62,8 @@ type THelloAppActions = {
 
 export const HelloAppCreateHooks = (actions: THelloAppActions) => {
   const afterMount = () => {
-    window.addEventListener('hashchange', showLocationHash
- }
+    window.addEventListener('hashchange', showLocationHash)
+  }
   const destroy = () => {
     window.removeEventListener('hashchange', showLocationHash)
   }
@@ -71,15 +71,15 @@ export const HelloAppCreateHooks = (actions: THelloAppActions) => {
 }
 ~~~
 
-No exemplo acima, dois hooks foram declarados **afterMount** e **destroy**.
+In the example above, two hooks were declared: **afterMount** and **destroy**.
 
-A função afterMount, será executada após a montagem do component e um event listener será adicionado. Através do event listener mensagens de log serão exibidas no console do navegador quando o location hash for alterado.
+The **afterMount** function will be executed after the component is mounted, and an event listener will be added. Through the event listener, log messages will be displayed in the browser console when the location hash changes.
 
-A função destroy será executada logo antes do componente ser destruído e removerá o listener do evento **hashchange**.
+The **destroy** function will be executed just before the component is destroyed and will remove the **hashchange** event listener.
 
-### Usando hooks factory
+### Using hooks factory
 
-No exemplo anterior um factory foi declarado para criar os hooks **beforeMount** e **destroy**. Seguindo adiante, é possível importar esse factory e usá-lo para definir o comportamento do componente.
+In the previous example, a factory was declared to create the **beforeMount** and **destroy** hooks. Moving forward, it’s possible to import this factory and use it to define the component’s behavior.
 
 ~~~js
 //HelloApp/index.ts
@@ -103,7 +103,8 @@ export const HelloApp = () => {
 }
 ~~~
 
-Você pode adicionar qualquer um dos 5 hooks suportados nos componentes IARES e ao adotar essa estratégia que favorece a modularização e facilita a aplicação de testes de unidade.
+You can add any of the five hooks supported in IARES components. By adopting this strategy, you can improve modularization and facilitate the application of unit tests.
+
 `;
 
 const template = () => tsx`

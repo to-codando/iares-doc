@@ -7,9 +7,9 @@ const ContentApp = () => mdx`
 # Components
 ---
 
-Componentes IARES são funções que devem retornar templates html, jsx, tsx ou mdx e estilos css.
+IARES components are functions that should return HTML, JSX, TSX, or MDX templates and CSS styles.
 
-Veja abaixo um exemplo de componente simples.
+Here is an example of a simple component.
 
 ~~~js
 import { tsx } from 'iares';
@@ -27,28 +27,28 @@ export const ButtonApp = () => ({
 
 const styles = () => css\`
   button-app {
-    display:flex;
+    display: flex;
   }
 \`
 ~~~
 
-Observe que as funções template e styles são injetadas no componente através da técnica de composição de objetos.
+Note that the **template** and **styles** functions are injected into the component using object composition techniques.
 
 ## Template
 
-Um template em componentes IARES é apenas uma função que pode retornar html, jsx, tsx ou inda mdx.
+A template in IARES components is just a function that can return HTML, JSX, TSX, or even MDX.
 
-> *jsx, tsx e mdx* são notações capazes de combinar a sintaxe javascript ou typescript com elementos html e marcações markdown respectivamente.
+> *JSX, TSX, and MDX* are notations capable of combining JavaScript or TypeScript syntax with HTML elements and Markdown markup respectively.
 
-### Parâmetros do template
+### Template Parameters
 
-O template tem a capacidade de acessar os parâmetros abaixo:
+The template has the ability to access the following parameters:
 
-- **props** - Propriedades de dados fornecidas através de atributos do componente.
-- **state** - Objeto contendo chaves de dados do gerenciador de estados ligado ao componente.
-- **actions** - Funções capazes de executar operações e definir o comportamento de reação do componente.
+- **props** - Data properties provided through the component's attributes.
+- **state** - An object containing data keys from the state manager tied to the component.
+- **actions** - Functions capable of performing operations and defining the component's reactive behavior.
 
-Veja abaixo um exemplo de como declarar e acessar parâmetros de template.
+Below is an example of how to declare and access template parameters.
 
 ~~~js
 import { tsx, createState } from 'iares';
@@ -58,11 +58,11 @@ type TProps = {
   value: number;
 }
 
-Type TState = {
+type TState = {
   total: number;
 }
 
-TActions = {
+type TActions = {
   doubleValue: () => void;
 }
 
@@ -74,8 +74,8 @@ type TParams = {
 
 const template = ({ state, props, actions }: TParams) => tsx\`
   <label>
-    <span> O dobro de:</span>
-    <input type="text" onkeyup=\${debounce(actions.doubleValue)}/> é \${state.total}
+    <span> The double of:</span>
+    <input type="text" onkeyup=\${debounce(actions.doubleValue)}/> is \${state.total}
   </label>
 \`
 
@@ -91,27 +91,26 @@ export const DoubleValueApp = ({ props }: TProps) => {
 
   return { template, state, props, actions }
 }
-
 ~~~
 
-Observe que os recursos retornados em **DoubleValueApp** são acessados através da função de template na view do componente.
+Note that the resources returned in **DoubleValueApp** are accessed via the template function in the component's view.
 
-> IARES é inteligente o suficiente para fornecer à propriedade composta **template** as outras três propriedades **state**, **props** e **actions** e assim garante total flexibilidade para gerenciar como o componente reage a mudanças de estado e que informações devem ser exibidas.
+> IARES is smart enough to provide the composed property **template** with the other three properties **state**, **props**, and **actions**, thus ensuring complete flexibility in managing how the component reacts to state changes and what information should be displayed.
 
 ## Composition API
 
-Nas seções anteriores o componente ButtonApp foi composto pelas funções template e styles. No entanto, existem outras propriedades que podem fazer parte da composição de componentes IARES.
+In the previous sections, the ButtonApp component was composed of the **template** and **styles** functions. However, there are other properties that can be part of IARES component composition.
 
-Observe abaixo todas as propriedades que podem fazer parte de componentes IARES:
+Below are all the properties that can be part of IARES components:
 
-- **template** - Função que retorna um literal template contendo elementos html e outros componentes.
-- **styles** - Função que retorna um literal template contendo os estilos css do componente.
-- **props** - Propriedades de dados fornecidas por outros componentes através de atributos html.
-- **state** - Dados observáveis através dos quais o componente pode reagir a alterações de estado.
-- **actions** - Funções capazes de executar operações e defir reações programaticamente.
-- **hooks** - Funções específicas executadas no ciclo de vida de componentes IARES.
+- **template** - A function that returns a template literal containing HTML elements and other components.
+- **styles** - A function that returns a template literal containing the component's CSS styles.
+- **props** - Data properties provided by other components through HTML attributes.
+- **state** - Observable data through which the component can react to state changes.
+- **actions** - Functions capable of performing operations and defining reactions programmatically.
+- **hooks** - Specific functions executed in the lifecycle of IARES components.
 
-Para saber mais sobre **state** e **hooks** acesse suas respectivas seções através dos links:
+To learn more about **state** and **hooks**, visit their respective sections via the links:
 - [State](#/state)
 - [Lifecycle hooks](#/lifecycles)
 
