@@ -8,18 +8,17 @@ const ContentApp = () => mdx`
 # Scaffolding
 ---
 
-
-Veja na imagem abaixo como se parece a estrutura padrão de pastas e arquivos de um projeto IARES:
+See the image below to view the default folder and file structure of an IARES project:
 
 ![Scaffolding](/assets/images/scaffolding.png)
 
-## Descrição de pastas 
+## Folder Descriptions
 
-A seguir a descrição de cada pasta no scaffolding padrão de projetos IARES.
+Below is the description of each folder in the standard IARES project scaffolding.
 
-- **Pasta [api]**
+- **[api] Folder**
 
-É nessa pasta que a configuração de API mocking é realizada através de *[json-server](https://www.npmjs.com/package/json-server)*.
+This folder is where the API mocking configuration is done using *[json-server](https://www.npmjs.com/package/json-server)*.
 
 ~~~raw
 ./api
@@ -27,11 +26,11 @@ A seguir a descrição de cada pasta no scaffolding padrão de projetos IARES.
 - index.js
 ~~~
 
-Enquanto o servidor de mocking é configurado através do arquivo *api/index.json*, o arquivo *api/db.json* define os dados de mocking de cada endpoint da API.
+While the mocking server is configured via the *api/index.json* file, the *api/db.json* file defines the mocking data for each API endpoint.
 
-- **Pasta [config]**
+- **[config] Folder**
 
-Na pasta config, estão configurações e utilitários de plugins locais usados no build das aplicações.
+In the config folder, you'll find configurations and utilities for local plugins used in application builds.
 
 ~~~raw
 ./config
@@ -42,14 +41,14 @@ Na pasta config, estão configurações e utilitários de plugins locais usados 
   |--env
 ~~~
 
-- *config/utils.js* - Nesse arquivo estão definidas funções utilitárias utilizadas nos plugins locais.
-- *config/plugins* - Contém cada um dos plugins locais desenvolvidos para atender a requisitos específicos do build de aplicações IARES.
-  - *plugins/onRebuild* - Exibe o host da aplicação e o hash do build atual, toda vez que esbuild executa uma nova construção.
-  - *plugins/tsAliasPathResolver* - Resolve path aliases e gera definição de tipos, toda vez que uma construção é executada.
+- *config/utils.js* - This file defines utility functions used in local plugins.
+- *config/plugins* - Contains each of the local plugins developed to meet specific build requirements for IARES applications.
+  - *plugins/onRebuild* - Displays the application host and the current build hash every time esbuild executes a new build.
+  - *plugins/tsAliasPathResolver* - Resolves path aliases and generates type definitions each time a build is executed.
 
-- **Pasta [public]**
+- **[public] Folder**
 
-Na pasta *./public*, estão presentes todos os arquivos públicos de uma aplicação construída com IARES.
+In the *./public* folder, you'll find all public files for an application built with IARES.
 
 ~~~raw
 ./public
@@ -64,9 +63,9 @@ Na pasta *./public*, estão presentes todos os arquivos públicos de uma aplica�
   -index.html
 ~~~
 
-Com exceção do arquivo index.html, nenhum dos arquivos acima é obrigatório. Mas, essa estrutura pode contribuir para maior produtividade durante o desenvolvimento de uma aplicação.
+With the exception of the index.html file, none of the above files are mandatory. However, this structure can contribute to greater productivity during application development.
 
-Os arquivos css definidos em *public/styles* são carregados através do arquivo *index.html*.
+The CSS files defined in *public/styles* are loaded via the *index.html* file.
 
 ~~~html
 <header>
@@ -74,7 +73,7 @@ Os arquivos css definidos em *public/styles* são carregados através do arquivo
 <header>
 ~~~
 
-As importações dos arquivos css são concentradas no arquivo *main.css*.
+The CSS file imports are concentrated in the *main.css* file.
 
 ~~~css
 @import url('./var.css');
@@ -84,9 +83,9 @@ As importações dos arquivos css são concentradas no arquivo *main.css*.
 @import url('./code.css');
 ~~~
 
-- **Pasta [src]**
+- **[src] Folder**
 
-Seguindo a convenção, é na pasta *./src* que estão e devem ser definidos todos os recursos de uma aplicação.
+Following convention, all application resources are located and should be defined in the *./src* folder.
 
 ~~~raw
 ./src
@@ -98,9 +97,9 @@ Seguindo a convenção, é na pasta *./src* que estão e devem ser definidos tod
   |-main.ts
 ~~~
 
-- **Pasta [ssh]**
+- **[ssh] Folder**
 
-Nessa pasta costumam estar presentes arquivos que armazenam chaves ssh e que são usados pelo sistema de build para criar o servidor local usando *https*.
+This folder usually contains files that store SSH keys and are used by the build system to create the local server using *https*.
 
 ~~~raw
 ./ssh
@@ -108,16 +107,15 @@ Nessa pasta costumam estar presentes arquivos que armazenam chaves ssh e que sã
   |-server.key
 ~~~
 
-Através de variáveis de ambiente é fácil referneciar esses arquivos para mais tarde configurar um servidor de desenvolvimento.
+These files can be easily referenced via environment variables to later configure a development server.
 
 ~~~raw
-# .env 
+# .env
 TLS_KEY=server.key
 TLS_CERT=server.crt
 ~~~
 
-
-Você pode ver abaixo um exemplo de como essa configuração é pode ser feita com ![esbuild](https://esbuild.github.io).
+You can see an example below of how this configuration can be done with ![esbuild](https://esbuild.github.io).
 
 ~~~js
 //esbuild.config.js
@@ -145,18 +143,19 @@ ctx.serve({
 });
 ~~~
 
-- **Outros arquivos:**
+- **Other files:**
 
-1. **esbuild.config.json** - Cofigura a contrução da aplicação com [esbuild](https://esbuild.github.io).
-2. **tsconfig.json** - Configura o comportamento da linguagem [typescript](https://www.typescriptlang.org).
-3. **biome.json** - define o comportamento de lint e formatação de código com [biome](https://biomejs.dev).
-4. **.prettierrc** - Define o comportamento de formatação de código com [prettier](https://prettier.io).
-5. **.stylintrc** - Define o comportamento de lint de código css com [stylint](https://stylelint.io).
-6. **.mocharc** - Configuração de tests automatizados com [mocha](https://mochajs.org).
-7. **.env** - Contém definições de variáveis de ambiente.
-8. **package.json** - Contém definições de dependêcias do projeto.
-9. **.editorconfig** - Compatível com a maioria dos editores de código, [editorConfig](https://editorconfig.org) define formatações básicas para edição de código.
-10. **.npmrc** - Define o comportamento de gerenciadores de dependências como [npm](https://www.npmjs.com) ou [pnpm](https://pnpm.io) que é o gerenciador usado em projetos IARES por padrão.
+1. **esbuild.config.json** - Configures the application build with [esbuild](https://esbuild.github.io).
+2. **tsconfig.json** - Configures the behavior of the [TypeScript](https://www.typescriptlang.org) language.
+3. **biome.json** - Defines linting and code formatting behavior with [biome](https://biomejs.dev).
+4. **.prettierrc** - Defines code formatting behavior with [prettier](https://prettier.io).
+5. **.stylintrc** - Defines CSS code linting behavior with [stylelint](https://stylelint.io).
+6. **.mocharc** - Configuration for automated testing with [mocha](https://mochajs.org).
+7. **.env** - Contains environment variable definitions.
+8. **package.json** - Contains project dependency definitions.
+9. **.editorconfig** - Compatible with most code editors, [editorConfig](https://editorconfig.org) defines basic code editing formatting.
+10. **.npmrc** - Defines the behavior of dependency managers like [npm](https://www.npmjs.com) or [pnpm](https://pnpm.io), which is the default manager used in IARES projects.
+
 `;
 
 const template = () => tsx`
